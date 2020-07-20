@@ -1,9 +1,5 @@
 # Epidemiology Modeling Workflows
 
-***This Raku package directory is obsolete.***
-
-***The package was moved to:*** https://github.com/antononcube/Raku-DSL-English-DSL::English::EpidemiologyModelingWorkflows .
-
 ## In brief
 
 This Raku Perl 6 package has grammar classes and action classes for the parsing and
@@ -23,24 +19,13 @@ Epidemiology Compartmental Modeling workflows, \[AAr1, AAr2\].
 
 **3.** Open a command line program. (E.g. Terminal on Mac OS X.)
 
-**4.** Download or clone this repository,
-[ConversationalAgents at GitHub](https://github.com/antononcube/ConversationalAgents). E.g.
+**4.** Run the commands:
 
 ```
-git clone https://github.com/antononcube/ConversationalAgents.git
+zef install https://github.com/antononcube/Raku-DSL-Shared.git
+zef install https://github.com/antononcube/Raku-DSL-English-EpidemiologyModelingWorkflows.git
 ```
 
-**5.** Go to the directory "ConversationalAgents/Packages/Perl6/DSL::English::EpidemiologyModelingWorkflows". E.g.
-
-```
-cd ConversationalAgents/Packages/Perl6/DSL::English::EpidemiologyModelingWorkflows
-```
-
-**6.** Execute the command:
- 
-```
-zef install . --force-install --force-test
-```
 
 ## Examples
 
@@ -49,7 +34,7 @@ Change the 'use' line with the proper location of the package.
 ```raku
 use DSL::English::EpidemiologyModelingWorkflows;
 
-say to_ECMMon_R('
+say ToEpidemiologyModelingWorkflowCode('
      create with SEI2HR;
      assign 100000 to total population;
      set infected normally symptomatic population to be 0;
@@ -59,10 +44,10 @@ say to_ECMMon_R('
      assign 0.1 to contact rate of the hospitalized population;
      simulate for 240 days;
      plot results;
-');
+', 'R-ECMMon');
 ```
 
-The command above should print out code of `ECMMon-R` :
+The command above should print out code of `ECMMon-R`, \[AAr2\] :
 
 ```r
 ECMMonUnit( model = SEI2HRModel()) %>%
@@ -76,6 +61,14 @@ ECMMonSimulate(maxTime = 240) %>%
 ECMMonPlotSolutions()
 ```
 
+## Versions
+
+The original version of this Raku package was developed/hosted at 
+\[ [AA3](https://github.com/antononcube/ConversationalAgents/tree/master/Packages/Perl6/EpidemiologyModelingWorkflows) \].
+
+A dedicated GitHub repository was made in order to make the installation with Raku's `zef` more direct. 
+(As shown above.)
+
 ## References 
 
 \[AAr1\] Anton Antonov, 
@@ -87,4 +80,9 @@ ECMMonPlotSolutions()
 [Epidemiology Compartmental Modeling Monad in R](https://github.com/antononcube/ECMMon-R), 
 (2020),
 [ECMMon-R at GitHub](https://github.com/antononcube/ECMMon-R). 
+
+\[AA3\] Anton Antonov, 
+[Epidemiology Modeling Workflows Raku Package](https://github.com/antononcube/ConversationalAgents/tree/master/Packages/Perl6/EpidemiologyModelingWorkflows), 
+(2020),
+[ConversationalAgents at GitHub](https://github.com/antononcube/ConversationalAgents).
  
