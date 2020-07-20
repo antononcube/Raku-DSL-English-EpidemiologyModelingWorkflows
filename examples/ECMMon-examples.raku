@@ -3,7 +3,7 @@ use lib '.';
 use DSL::English::EpidemiologyModelingWorkflows;
 use DSL::English::EpidemiologyModelingWorkflows::Grammar;
 
-say to_ECMMon_WL('
+say ToEpidemiologyModelingWorkflowCode('
      create with SEI2HR;
      assign 100000 to susceptible population;
      set infected normally symptomatic population to be 0;
@@ -12,7 +12,7 @@ say to_ECMMon_WL('
      assign 0.58 to contact rate of infected severely symptomatic population;
      assign 0.1 to contact rate of the hospitalized population;
      simulate for 240 days;
-     plot results;');
+     plot results;', 'R-ECMMon' );
 
 #say to_ECMMon_Py('
 #create object with model SEI2HR;
