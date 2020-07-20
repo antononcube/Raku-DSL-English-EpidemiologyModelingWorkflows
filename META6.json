@@ -1,0 +1,35 @@
+{
+  "perl": "6.d",
+  "name": "DSL::English::EpidemiologyModelingWorkflows",
+  "api": "1",
+  "auth": "github:antononcube",
+  "version": "0.5.0",
+  "description": "Epidemiology Modeling workflows building by natural language commands.",
+  "authors": [
+    "Anton Antonov"
+  ],
+  "license": "GPL-3.0-or-later",
+  "provides": {
+    "DSL::English::EpidemiologyModelingWorkflows": "lib/DSL/English/EpidemiologyModelingWorkflows.rakumod",
+    "DSL::English::EpidemiologyModelingWorkflows::Grammar": "lib/DSL/English/EpidemiologyModelingWorkflows/Grammar.rakumod",
+    "DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases": "lib/DSL/English/EpidemiologyModelingWorkflows/Grammar/EpidemiologyPhrases.rakumod",
+    "DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/Python/ECMMon.rakumod",
+    "DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/R/ECMMon.rakumod",
+    "DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/WL/ECMMon.rakumod"
+  },
+  "depends": [ "DSL::Shared" ],
+  "build-depends": [],
+  "test-depends": [],
+  "resources": [],
+  "tags": [
+    "Epidemiology modeling",
+    "Epidemiology",
+    "Modeling",
+    "Parser",
+    "Interpreter",
+    "Monad",
+    "Workflow",
+    "Pipeline"
+  ],
+  "source-url": "https://github.com/antononcube/Raku-DSL-English-EpidemiologyModelingWorkflows.git"
+}
