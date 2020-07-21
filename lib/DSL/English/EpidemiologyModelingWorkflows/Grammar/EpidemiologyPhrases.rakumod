@@ -18,6 +18,7 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
     token bed { 'bed' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'bed') }> }
     token beds { 'beds' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'beds') }> }
     token bulk-noun { 'bulk' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'bulk') }> }
+    token calibrate-directive { 'calibrate' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'calibrate') }> }
     token capacity { 'capacity' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'capacity') }> }
     token change { 'change' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'change') }> }
     token consumption { 'consumption' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'consumption') }> }
@@ -77,6 +78,7 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
     token supplies { 'supplies' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'supplies') }> }
     token susceptible { 'susceptible' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'susceptible') }> }
     token symptomatic { 'symptomatic' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'symptomatic') }> }
+    token target-noun { 'target' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'target') }> }
     token time { 'time' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'time') }> }
     token total { 'total' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'total') }> }
     token transport { 'transport' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'transport') }> }

@@ -18,6 +18,7 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
     token bed { 'bed' }
     token beds { 'beds' }
     token bulk-noun { 'bulk' }
+    token calibrate-directive { 'calibrate' }
     token capacity { 'capacity' }
     token change { 'change' }
     token consumption { 'consumption' }
@@ -77,6 +78,7 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
     token supplies { 'supplies' }
     token susceptible { 'susceptible' }
     token symptomatic { 'symptomatic' }
+    token target-noun { 'target' }
     token time { 'time' }
     token total { 'total' }
     token transport { 'transport' }

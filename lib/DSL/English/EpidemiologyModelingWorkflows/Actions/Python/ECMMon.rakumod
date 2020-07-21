@@ -177,7 +177,13 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon {
 
     # Batch Simulate
     method batch-simulate-command($/) { make $/.values[0].made; }
-    method batch-simulate-over-parameters($/) { make 'obj = ECMMonBatchSimulate( ecmObj = obj, ' ~ $<batch-simulation-parameters-spec>.made ~ ', ' ~ $<time-range-spec>.made ~ ')'; }
+    method batch-simulate-over-parameters($/) {
+        if $<time-range-spec> {
+            make 'obj = ECMMonBatchSimulate( ecmObj = obj, ' ~ $<batch-simulation-parameters-spec>.made ~ ', ' ~ $<time-range-spec>.made ~ ')';
+        } else {
+            make 'obj = ECMMonBatchSimulate( ecmObj = obj, ' ~ $<batch-simulation-parameters-spec>.made ~ ' )';
+        }
+    }
 
     method batch-simulation-parameters-spec($/) { make $/.values[0].made; }
     method batch-parameters-data-frame-spec($/) { make 'params = ' ~ $<dataset-name>.made; }
@@ -186,6 +192,20 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon {
     method parameter-spec($/) { make $/.values[0].made; }
     method parameter-values($/) { make $/.values[0].made; }
     method parameter-range-spec($/) { make $<parameter-spec>.made ~ ' = ' ~ $<parameter-values>.made; }
+
+    # Calibrate
+    method calibrate-command($/) { make $/.values[0].made; }
+    method calibrate-over-parameters($/) {
+        if $<time-range-spec> {
+            make 'obj = ECMMonCalibrate( ecmObj = obj, ' ~ $<batch-simulation-parameters-spec>.made ~ ', ' ~ $<time-range-spec>.made ~ ', ' ~ $<calibration-target-phrase>.made ~ ' )';
+        } else {
+            make 'obj = ECMMonCalibrate( ecmObj = obj, ' ~ $<batch-simulation-parameters-spec>.made ~ ', ' ~ $<calibration-target-phrase>.made ~ ' )';
+        }
+    }
+
+    method calibration-target-phrase($/) { make $<target-stock-spec>.made; }
+
+    method target-stock-spec($/) { make 'target = [' ~ $<stock-spec>.made ~ ' = ' ~ $<variable-name>.made ~ ']' ; }
 
     # Plot command
     method plot-command($/) { make $/.values[0].made; }

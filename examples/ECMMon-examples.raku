@@ -12,7 +12,8 @@ say ToEpidemiologyModelingWorkflowCode('
      assign 0.58 to contact rate of infected severely symptomatic population;
      assign 0.1 to contact rate of the hospitalized population;
      simulate for 240 days;
-     plot results;', 'R-ECMMon' );
+     calibrate for target DIPt -> tsDeathsUK over TPt in from 100000 to 1000000 step 100000, lpcr = 0 and aincp = c(12, 16, 21) for 365 days;
+     plot results;', 'Python-ECMMon' );
 
 #say to_ECMMon_Py('
 #create object with model SEI2HR;

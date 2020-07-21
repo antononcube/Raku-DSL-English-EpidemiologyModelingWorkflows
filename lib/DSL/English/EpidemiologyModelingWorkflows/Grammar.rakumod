@@ -50,6 +50,7 @@ grammar DSL::English::EpidemiologyModelingWorkflows::Grammar::WorkflowCommand
         <assign-parameters-command> |
         <simulate-command> |
         <batch-simulate-command> |
+        <calibrate-command> |
         <plot-command> |
         <sensitivity-analysis-command> |
         <extend-single-site-model-command> }
@@ -208,6 +209,13 @@ grammar DSL::English::EpidemiologyModelingWorkflows::Grammar::WorkflowCommand
 
     # Sensitivity analysis command
     rule sensitivity-analysis-command { <sensitivity> <analysis> }
+
+    # Calibration command
+    rule calibrate-command { <calibrate-over-parameters> }
+    rule calibrate-preamble { <calibrate-directive> }
+    rule calibrate-over-parameters { <.calibrate-preamble> <calibration-target-phrase> <.over-phrase>? <batch-simulation-parameters-spec> <.for-phrase>? <time-range-spec> }
+    rule calibration-target-phrase { <.for-phrase> <.the-determiner>? <.target-noun> <target-stock-spec> }
+    rule target-stock-spec { <stock-spec> [ <.key-to-symbol> | <.equal-symbol> ] <variable-name> }
 
     # Plot command
     rule plot-command { <plot-solution-histograms> | <plot-solutions> | <plot-population-solutions> }
