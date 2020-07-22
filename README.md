@@ -15,7 +15,10 @@ Epidemiology Compartmental Modeling workflows, \[AAr1, AAr2\].
 
 **1.** Install Raku (Perl 6) : https://raku.org/downloads . 
 
-**2.** Install Zef Module Installer : https://github.com/ugexe/zef .
+**2.** Make sure you have Zef Module Installer. 
+ 
+   - Type in `zef` in the command line.
+   - You can install the Zef Module Installer from : https://github.com/ugexe/zef .
 
 **3.** Open a command line program. (E.g. Terminal on Mac OS X.)
 
@@ -72,7 +75,7 @@ A dedicated GitHub repository was made in order to make the installation with Ra
 ## References 
 
 \[AAr1\] Anton Antonov, 
-[Coronavirus-propagation-dynamics](../../Projects/Coronavirus-propagation-dynamics), 
+[Coronavirus-propagation-dynamics](https://github.com/antononcube/SystemModeling/tree/master/Projects/Coronavirus-propagation-dynamics), 
 (2020),
 [SystemModeling at GitHub](https://github.com/antononcube/SystemModeling).
  
