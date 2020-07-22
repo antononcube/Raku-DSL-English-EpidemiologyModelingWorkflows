@@ -6,7 +6,7 @@ use Test;
 plan 9;
 
 # Shortcut
-my $pECMMONCOMMAND = DSL::English::EpidemiologyModelingWorkflows::Grammar::WorkflowCommand;
+my $pECMMONCOMMAND = DSL::English::EpidemiologyModelingWorkflows::Grammar;
 
 #-----------------------------------------------------------
 # Simulations commands
