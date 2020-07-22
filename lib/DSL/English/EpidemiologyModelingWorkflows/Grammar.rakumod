@@ -37,7 +37,7 @@ use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Roles::ErrorHandling;
 use DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases;
 
-grammar DSL::English::EpidemiologyModelingWorkflows::Grammar::WorkflowCommand
+grammar DSL::English::EpidemiologyModelingWorkflows::Grammar
         does DSL::Shared::Roles::English::PipelineCommand
         does DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
         does DSL::Shared::Roles::ErrorHandling {
@@ -54,6 +54,12 @@ grammar DSL::English::EpidemiologyModelingWorkflows::Grammar::WorkflowCommand
         <plot-command> |
         <sensitivity-analysis-command> |
         <extend-single-site-model-command> }
+
+    # Scored stocks list
+    token score-association-symbol { '=' | '->' | '→' }
+    token score-association-separator { <.ws>? <score-association-symbol> <.ws>? }
+    regex scored-stock-spec { <stock-spec> <.score-association-separator> <number-value> }
+    rule scored-stocks-list { <scored-stock-spec>+ % <list-separator> }
 
     # Load data
     rule data-load-command { <use-object> }
@@ -211,11 +217,25 @@ grammar DSL::English::EpidemiologyModelingWorkflows::Grammar::WorkflowCommand
     rule sensitivity-analysis-command { <sensitivity> <analysis> }
 
     # Calibration command
-    rule calibrate-command { <calibrate-over-parameters> }
+    rule calibrate-command { <calibration-spec> }
     rule calibrate-preamble { <calibrate-directive> }
-    rule calibrate-over-parameters { <.calibrate-preamble> <calibration-target-phrase> <.over-phrase>? <batch-simulation-parameters-spec> <.for-phrase>? <time-range-spec> }
-    rule calibration-target-phrase { <.for-phrase> <.the-determiner>? <.target-noun> <target-stock-spec> }
+    rule calibration-spec { <.calibrate-preamble> <calibration-arguments-list> }
+    regex calibration-arguments-list { <calibration-argument>+ % <list-separator> }
+    regex calibration-argument { <calibration-target-spec> | <calibration-distance-function-spec> | <calibration-method-spec> | <calibration-stock-weights-spec> | <calibration-parameters-spec> }
+
+    rule calibration-target-spec { <.for-phrase> <.the-determiner>? <.target-noun> <target-stock-spec> }
     rule target-stock-spec { <stock-spec> [ <.key-to-symbol> | <.equal-symbol> ] <variable-name> }
+
+    rule calibration-parameters-spec { <.over-phrase> <.the-determiner>? <.parameters-noun> <batch-simulation-parameters-spec> }
+
+    rule calibration-distance-function-spec { <.using-preposition>? <.the-determiner>? <.distance-function-phrase> <distance-function-spec> }
+    rule distance-function-spec { <wl-expr> }
+
+    rule calibration-method-spec { <.using-preposition>? <.the-determiner>? <.method-noun> <minimization-method-spec> }
+    rule minimization-method-spec { <wl-expr> }
+
+    rule calibration-stock-weights-spec { <.using-preposition>? <.the-determiner>? <.scored-stocks-phrase> <scored-stocks-spec> }
+    rule scored-stocks-spec { <scored-stocks-list> }
 
     # Plot command
     rule plot-command { <plot-solution-histograms> | <plot-solutions> | <plot-population-solutions> }

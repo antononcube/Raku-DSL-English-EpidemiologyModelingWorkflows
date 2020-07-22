@@ -51,7 +51,7 @@ multi ToEpidemiologyModelingWorkflowCode ( Str $command where not has-semicolon(
 
     die 'Unknown target.' unless %targetToAction{$target}:exists;
 
-    my $match = DSL::English::EpidemiologyModelingWorkflows::Grammar::WorkflowCommand.parse($command, actions => %targetToAction{$target} );
+    my $match = DSL::English::EpidemiologyModelingWorkflows::Grammar.parse($command, actions => %targetToAction{$target} );
     die 'Cannot parse the given command.' unless $match;
     return $match.made;
 }

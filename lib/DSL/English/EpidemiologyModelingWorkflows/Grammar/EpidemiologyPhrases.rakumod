@@ -94,4 +94,5 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
     rule simulation-results-phrase { <simulation>? <results> | <solution> | <solutions> }
     rule single-site-model-phrase { <single-adjective> <site-noun> <model> }
     rule migrating-stocks-phrase { [ <migrating-adjective> | <migration-noun> ] [ <stocks-noun> | <stock-noun> ]}
+    rule scored-stocks-phrase { [ 'scored' | 'weighed' ] 'stocks' | [ 'stock' | 'stocks' ] [ 'weights' | 'scores' ] }
 }

@@ -29,7 +29,7 @@
 #
 #   The actions are implemented for the grammar:
 #
-#     DSL::English::EpidemiologyModelingWorkflows::Grammar::WorkflowCommand
+#     DSL::English::EpidemiologyModelingWorkflows::Grammar
 #
 #   and a possible software monad ECMMon-Py.
 #
@@ -56,6 +56,7 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon {
     method wl-range-spec($/) { make 'seq' ~ $<number-value-list>.made.substr(1); }
     method r-numeric-list-spec($/) { make $<number-value-list>.made; }
     method wl-numeric-list-spec($/) { make $<number-value-list>.made; }
+    method wl-expr($/) { make $/.Str; }
 
     # Range spec
     method range-spec($/) {
@@ -77,7 +78,11 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon {
     method trivial-parameter-false($/) { make 'False'; }
     method trivial-parameter-true($/) { make 'True'; }
 
-      # Data load commands
+    # (Scored) item lists
+    method scored-stock-spec($/) { make $<stock-spec>.made ~ ' = ' ~ $<number-value>.made ; }
+    method scored-stocks-list($/) { make '[' ~ $<scored-stock-spec>>>.made.join(', ') ~ ']'; }
+
+    # Data load commands
     method data-load-command($/) { make $/.values[0].made; }
     method use-object($/) { make $<variable-name>.made; }
 
@@ -188,24 +193,31 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon {
     method batch-simulation-parameters-spec($/) { make $/.values[0].made; }
     method batch-parameters-data-frame-spec($/) { make 'params = ' ~ $<dataset-name>.made; }
     method batch-parameter-outer-form-spec($/) { make 'params = ' ~ $<parameter-range-spec-list>.made; }
-    method parameter-range-spec-list($/) { make '{' ~ $<parameter-range-spec>>>.made.join(', ') ~ '}'; }
+    method parameter-range-spec-list($/) { make '[' ~ $<parameter-range-spec>>>.made.join(', ') ~ ']'; }
     method parameter-spec($/) { make $/.values[0].made; }
     method parameter-values($/) { make $/.values[0].made; }
     method parameter-range-spec($/) { make $<parameter-spec>.made ~ ' = ' ~ $<parameter-values>.made; }
 
     # Calibrate
     method calibrate-command($/) { make $/.values[0].made; }
-    method calibrate-over-parameters($/) {
-        if $<time-range-spec> {
-            make 'obj = ECMMonCalibrate( ecmObj = obj, ' ~ $<batch-simulation-parameters-spec>.made ~ ', ' ~ $<time-range-spec>.made ~ ', ' ~ $<calibration-target-phrase>.made ~ ' )';
-        } else {
-            make 'obj = ECMMonCalibrate( ecmObj = obj, ' ~ $<batch-simulation-parameters-spec>.made ~ ', ' ~ $<calibration-target-phrase>.made ~ ' )';
-        }
-    }
+    method calibration-spec($/) { make 'obj = ECMMonCalibrate( ecmObj = obj, ' ~ $<calibration-arguments-list>.made ~ ' )'; }
 
-    method calibration-target-phrase($/) { make $<target-stock-spec>.made; }
+    method calibration-arguments-list($/) { make $<calibration-argument>>>.made.join(', '); }
+    method calibration-argument($/) { make $/.values[0].made; }
 
-    method target-stock-spec($/) { make 'target = [' ~ $<stock-spec>.made ~ ' = ' ~ $<variable-name>.made ~ ']' ; }
+    method calibration-target-spec($/) { make $<target-stock-spec>.made; }
+    method target-stock-spec($/) { make ' target = [' ~ $<stock-spec>.made ~ ' = ' ~ $<variable-name>.made ~ ']' ; }
+
+    method calibration-parameters-spec($/) { make $/.values[0].made; }
+
+    method calibration-distance-function-spec($/) { make 'distanceFunction = ' ~ $/.values[0].made; }
+    method distance-function-spec($/) { make $/.values[0].made; }
+
+    method calibration-method-spec($/) { make 'method = ' ~ $/.values[0].made; }
+    method minimization-method-spec($/) { make $/.values[0].made; }
+
+    method calibration-stock-weights-spec($/) { 'stockWeights = ' ~ make $/.values[0].made; }
+    method scored-stocks-spec($/) { make $/.values[0].made; }
 
     # Plot command
     method plot-command($/) { make $/.values[0].made; }
