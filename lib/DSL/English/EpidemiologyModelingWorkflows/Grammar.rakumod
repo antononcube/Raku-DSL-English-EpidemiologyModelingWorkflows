@@ -210,7 +210,7 @@ grammar DSL::English::EpidemiologyModelingWorkflows::Grammar
     rule parameter-range-spec-list { <parameter-range-spec>+ % <list-separator> }
     rule parameter-spec { <stock-spec> | <rate-spec> }
     rule parameter-values { <number-value-list> | <range-spec> | <r-range-spec> | <r-numeric-list-spec> }
-    rule parameter-range-spec { <parameter-spec> [ <.running-over-phrase> | <.in-preposition> | <.equal-symbol> ] <parameter-values> }
+    rule parameter-range-spec { <parameter-spec> [ <.running-over-phrase> | <.in-preposition> | <.equal-symbol> ]? <parameter-values> }
     rule running-over-phrase { <that-pronoun>? <is-verb>? <run-verb>? <over-preposition> }
 
     # Sensitivity analysis command
@@ -220,7 +220,7 @@ grammar DSL::English::EpidemiologyModelingWorkflows::Grammar
     rule calibrate-command { <calibration-spec> }
     rule calibrate-preamble { <calibrate-directive> }
     rule calibration-spec { <.calibrate-preamble> <calibration-arguments-list> }
-    regex calibration-arguments-list { <calibration-argument>+ % <list-separator> }
+    regex calibration-arguments-list { <calibration-argument>+ % [ <list-separator> | <ws> ]}
     regex calibration-argument { <calibration-target-spec> | <calibration-distance-function-spec> | <calibration-method-spec> | <calibration-stock-weights-spec> | <calibration-parameters-spec> }
 
     rule calibration-target-spec { <.for-phrase> <.the-determiner>? <.target-noun> <target-stock-spec> }

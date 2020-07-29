@@ -64,7 +64,7 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon {
     method wl-range-spec($/) { make 'Range[' ~ $<number-value-list>.made.substr(1,*-1) ~ "]"; }
     method r-numeric-list-spec($/) { make $<number-value-list>.made; }
     method wl-numeric-list-spec($/) { make $<number-value-list>.made; }
-    method wl-expr($/) { make $/.Str; }
+    method wl-expr($/) { make $/.Str.substr(1,*-1); }
 
     # Range spec
     method range-spec($/) {

@@ -15,9 +15,10 @@ say ToEpidemiologyModelingWorkflowCode('
      assign 0.1 to contact rate of the hospitalized population;
      simulate for 240 days;
      plot results;
-     calibrate for target DIPt -> tsDeathsUK, with scored stocks DIPt->1 and ISSPt ->3, over parameters TPt in from 100000 to 1000000 step 100000, lpcr = 0 and aincp = c(12, 16, 21), and distance function (Norm[#1-#2,Infinity]&);
+     calibrate for target DIPt -> tsDeathsUK with scored stocks DIPt->1 and ISSPt ->3 over parameters TPt in from 100000 to 1000000 step 100000, lpcr = 0 and aincp = c(12, 16, 21), and distance function `(Norm[#1-#2,Infinity]&)`;
 ', 'Python-ECMMon' );
 
+#
 #say to_ECMMon_Py('
 #create object with model SEI2HR;
 #extend by the adjacency matrix mat1 for the migrating stocks SPt, EPt, and RPt;
