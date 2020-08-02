@@ -56,6 +56,9 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon {
     method wl-range-spec($/) { make 'seq' ~ $<number-value-list>.made.substr(1); }
     method r-numeric-list-spec($/) { make $<number-value-list>.made; }
     method wl-numeric-list-spec($/) { make $<number-value-list>.made; }
+    method span-spec($/)    { make '[' ~ $<from>.made ~ ', ' ~ $<to>.made ~ ']'; }
+    method r-span-spec($/)  { make '[' ~ $<from>.made ~ ', ' ~ $<to>.made ~ ']'; }
+    method wl-span-spec($/) { make '[' ~ $<from>.made ~ ', ' ~ $<to>.made ~ ']'; }
     method wl-expr($/) { make $/.Str.substr(1,*-1); }
 
     # Range spec
@@ -208,7 +211,10 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon {
     method calibration-target-spec($/) { make $<target-stock-spec>.made; }
     method target-stock-spec($/) { make ' target = [' ~ $<stock-spec>.made ~ ' = ' ~ $<variable-name>.made ~ ']' ; }
 
-    method calibration-parameters-spec($/) { make $/.values[0].made; }
+    method calibration-parameters-spec($/) { make 'parameters = ' ~ $<parameter-span-spec-list>.made; }
+    method parameter-span-spec-list($/) { make '[' ~ $<parameter-span-spec>>>.made.join(', ') ~ ']'; }
+    method parameter-span-spec($/) { make $<parameter-spec>.made ~ ' = ' ~ $<parameter-span>.made; }
+    method parameter-span($/) { make $/.values[0].made; }
 
     method calibration-distance-function-spec($/) { make 'distanceFunction = ' ~ $/.values[0].made; }
     method distance-function-spec($/) { make $/.values[0].made; }

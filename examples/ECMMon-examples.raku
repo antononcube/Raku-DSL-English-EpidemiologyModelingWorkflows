@@ -15,7 +15,7 @@ say ToEpidemiologyModelingWorkflowCode('
      assign 0.1 to contact rate of the hospitalized population;
      simulate for 240 days;
      plot results;
-     calibrate for target DIPt -> tsDeathsUK with scored stocks DIPt->1 and ISSPt ->3 over parameters TPt in from 100000 to 1000000 step 100000, lpcr = 0 and aincp = c(12, 16, 21), and distance function `(Norm[#1-#2,Infinity]&)`;
+     calibrate for target DIPt -> tsDeathsUK with scored stocks DIPt->1 and ISSPt ->3 over parameters TPt is in c(120000, 200000), aincp = c(12, 16, 21), aip from 0.4 to 0.8 and distance function `(Norm[#1-#2,Infinity]&)`;
 ', 'Python-ECMMon' );
 
 #

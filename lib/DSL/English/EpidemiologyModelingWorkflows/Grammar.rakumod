@@ -209,8 +209,8 @@ grammar DSL::English::EpidemiologyModelingWorkflows::Grammar
     rule batch-parameter-outer-form-spec { <parameter-range-spec-list> }
     rule parameter-range-spec-list { <parameter-range-spec>+ % <list-separator> }
     rule parameter-spec { <stock-spec> | <rate-spec> }
-    rule parameter-values { <number-value-list> | <range-spec> | <r-range-spec> | <r-numeric-list-spec> }
-    rule parameter-range-spec { <parameter-spec> [ <.running-over-phrase> | <.in-preposition> | <.equal-symbol> ]? <parameter-values> }
+    rule parameter-values { <range-spec> | <r-range-spec> | <wl-range-spec> | <number-value-list> | <r-numeric-list-spec> | <wl-numeric-list-spec> }
+    rule parameter-range-spec { <parameter-spec> [ <.running-over-phrase> | <.is-verb>? <.in-preposition> | <.equal-symbol> ]? <parameter-values> }
     rule running-over-phrase { <that-pronoun>? <is-verb>? <run-verb>? <over-preposition> }
 
     # Sensitivity analysis command
@@ -223,17 +223,25 @@ grammar DSL::English::EpidemiologyModelingWorkflows::Grammar
     regex calibration-arguments-list { <calibration-argument>+ % [ <list-separator> | <ws> ]}
     regex calibration-argument { <calibration-target-spec> | <calibration-distance-function-spec> | <calibration-method-spec> | <calibration-stock-weights-spec> | <calibration-parameters-spec> }
 
+    # Calibration target
     rule calibration-target-spec { <.for-phrase> <.the-determiner>? <.target-noun> <target-stock-spec> }
     rule target-stock-spec { <stock-spec> [ <.key-to-symbol> | <.equal-symbol> ] <variable-name> }
 
-    rule calibration-parameters-spec { <.over-phrase> <.the-determiner>? <.parameters-noun> <batch-simulation-parameters-spec> }
+    # Calibration parameters
+    rule calibration-parameters-spec { <.over-phrase> <.the-determiner>? <.parameters-noun> <parameter-span-spec-list> }
+    rule parameter-span-spec-list { <parameter-span-spec>+ % <list-separator> }
+    rule parameter-span-spec { <parameter-spec> [ <.running-over-phrase> | <.is-verb>? <.in-preposition> | <.equal-symbol> ]? <parameter-span> }
+    rule parameter-span { <span-spec> | <r-span-spec> | <wl-span-spec> | <number-value-list> | <r-numeric-list-spec> | <wl-numeric-list-spec> }
 
+    # Calibration distance function
     rule calibration-distance-function-spec { <.using-preposition>? <.the-determiner>? <.distance-function-phrase> <distance-function-spec> }
     rule distance-function-spec { <wl-expr> }
 
+    # Calibration method
     rule calibration-method-spec { <.using-preposition>? <.the-determiner>? <.method-noun> <minimization-method-spec> }
     rule minimization-method-spec { <wl-expr> }
 
+    # Calibration stock weights
     rule calibration-stock-weights-spec { <.using-preposition>? <.the-determiner>? <.scored-stocks-phrase> <scored-stocks-spec> }
     rule scored-stocks-spec { <scored-stocks-list> }
 
