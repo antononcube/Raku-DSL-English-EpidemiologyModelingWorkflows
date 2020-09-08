@@ -1,11 +1,11 @@
 use v6;
 
-use DSL::Shared::Roles::English::CommonParts;
+use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Utilities::FuzzyMatching;
 
 # Epidemiology specific phrases
 role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
-        does DSL::Shared::Roles::English::CommonParts {
+        does DSL::Shared::Roles::English::PipelineCommand {
     token word-spec { \w+ }
 
     # Proto tokens

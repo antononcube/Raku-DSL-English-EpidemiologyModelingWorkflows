@@ -46,8 +46,10 @@
 use v6;
 
 use DSL::English::EpidemiologyModelingWorkflows::Grammar;
+use DSL::Shared::Actions::English::R::PipelineCommand;
 
-class DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon {
+class DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon
+        is DSL::Shared::Actions::English::R::PipelineCommand {
     # Top
     method TOP($/) { make $/.values[0].made; }
 
@@ -274,7 +276,17 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon {
     method migrating-stocks-subcommand($/) { make $<stock-specs-list>.made; }
     method stock-specs-list($/) { make 'c("' ~ $<stock-spec>>>.made.join('", "') ~ '")'; }
 
-    # Pipeline command
-    method pipeline-command($/) { make  $/.values[0].made; }
-    method get-pipeline-value($/) { make 'ECMMonEchoValue()'; }
+    # Pipeline command overwrites
+    ## Value
+    method take-pipeline-value($/) { make 'ECMMonTakeValue()'; }
+    method echo-pipeline-value($/) { make 'ECMMonEchoValue()'; }
+    method echo-pipeline-funciton-value($/) { make 'ECMMonEchoFunctionValue( ' ~ $<pipeline-function-spec>.made ~ ' )'; }
+
+    ## Context
+    method take-pipeline-context($/) { make 'ECMMonTakeContext()'; }
+    method echo-pipeline-context($/) { make 'ECMMonEchoContext'; }
+    method echo-pipeline-function-context($/) { make 'ECMMonEchoFunctionContext( ' ~ $<pipeline-function-spec>.made ~ ' )'; }
+
+    ## Echo messages
+    method echo-command($/) { make 'ECMMonEcho( ' ~ $<echo-message-spec>.made ~ ' )'; }
 }

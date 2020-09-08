@@ -38,7 +38,6 @@ use DSL::Shared::Roles::ErrorHandling;
 use DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases;
 
 grammar DSL::English::EpidemiologyModelingWorkflows::Grammar
-        does DSL::Shared::Roles::English::PipelineCommand
         does DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
         does DSL::Shared::Roles::ErrorHandling {
     # TOP

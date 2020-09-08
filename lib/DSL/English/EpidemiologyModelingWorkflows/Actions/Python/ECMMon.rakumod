@@ -39,8 +39,10 @@
 use v6;
 
 use DSL::English::EpidemiologyModelingWorkflows::Grammar;
+use DSL::Shared::Actions::English::Python::PipelineCommand;
 
-class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon {
+class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon
+        is DSL::Shared::Actions::English::Python::PipelineCommand {
     # Top
     method TOP($/) { make $/.values[0].made; }
 
@@ -267,7 +269,6 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon {
     method migrating-stocks-subcommand($/) { make $<stock-specs-list>.made; }
     method stock-specs-list($/) { make '["' ~ $<stock-spec>>>.made.join('", "') ~ '"]'; }
 
-    # Pipeline command
-    method pipeline-command($/) { make  $/.values[0].made; }
-    method get-pipeline-value($/) { make 'obj = ECMMonEchoValue( ecmObj = obj )'; }
+    # Pipeline command overwrites
+    ## None
 }
