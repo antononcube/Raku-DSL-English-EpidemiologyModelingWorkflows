@@ -15,6 +15,8 @@ interpretation of English natural speech commands that specify epidemiology mode
 
 unit module DSL::English::EpidemiologyModelingWorkflows;
 
+use DSL::Shared::Utilities::MetaSpecifications;
+
 use DSL::English::EpidemiologyModelingWorkflows::Grammar;
 use DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon;
 use DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon;
@@ -58,15 +60,21 @@ multi ToEpidemiologyModelingWorkflowCode ( Str $command where not has-semicolon(
 
 multi ToEpidemiologyModelingWorkflowCode ( Str $command where has-semicolon($command), Str $target = 'R-ECMMon' ) {
 
-    die 'Unknown target.' unless %targetToAction{$target}:exists;
+    my $specTarget = get-dsl-spec( $command, 'target');
+
+    $specTarget = !$specTarget ?? $target !! $specTarget.value;
+
+    die 'Unknown target.' unless %targetToAction{$specTarget}:exists;
 
     my @commandLines = $command.trim.split(/ ';' \s* /);
 
     @commandLines = grep { $_.Str.chars > 0 }, @commandLines;
 
-    my @cmdLines = map { ToEpidemiologyModelingWorkflowCode($_, $target) }, @commandLines;
+    my @cmdLines = map { ToEpidemiologyModelingWorkflowCode($_, $specTarget) }, @commandLines;
 
-    return @cmdLines.join( %targetToSeparator{$target} ).trim;
+    @cmdLines = grep { $_.^name eq 'Str' }, @cmdLines;
+
+    return @cmdLines.join( %targetToSeparator{$specTarget} ).trim;
 }
 
 #-----------------------------------------------------------
