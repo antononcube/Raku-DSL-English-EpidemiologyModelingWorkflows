@@ -277,7 +277,11 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon
     method stock-specs-list($/) { make 'c("' ~ $<stock-spec>>>.made.join('", "') ~ '")'; }
 
     # Pipeline command overwrites
+    ## Object
+    method assign-pipeline-object-to($/) { make 'function(x) { assign( x = "' ~ $/.values[0].made ~ '", value = x ); x }'; }
+
     ## Value
+    method assign-pipeline-value-to($/) { make 'function(x) { assign( x = "' ~ $/.values[0].made ~ '", value = ECMMonTakeValue(x) ); x }'; }
     method take-pipeline-value($/) { make 'ECMMonTakeValue()'; }
     method echo-pipeline-value($/) { make 'ECMMonEchoValue()'; }
     method echo-pipeline-funciton-value($/) { make 'ECMMonEchoFunctionValue( ' ~ $<pipeline-function-spec>.made ~ ' )'; }

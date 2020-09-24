@@ -6,7 +6,7 @@ use DSL::English::EpidemiologyModelingWorkflows::Grammar;
 #say DSL::English::EpidemiologyModelingWorkflows::Grammar.subparse('calibrate for target DIPt -> tsDeathsUK, with scored stocks DIPt->1 and ISSPt ->3, over TPt in from 100000 to 1000000 step 100000, lpcr = 0 and aincp = c(12, 16, 21)');
 
 say ToEpidemiologyModelingWorkflowCode('
-     DSL TARGET WL-ECMMon;
+     DSL TARGET R-ECMMon;
      create with SEI2HR;
      assign 100000 to susceptible population;
      set infected normally symptomatic population to be 0;
@@ -18,7 +18,7 @@ say ToEpidemiologyModelingWorkflowCode('
      echo pipeline value;
      plot results;
      calibrate for target DIPt -> tsDeathsUK with scored stocks DIPt->1 and ISSPt ->3 over parameters TPt is in c(120000, 200000), aincp = c(12, 16, 21), aip from 0.4 to 0.8 and distance function `(Norm[#1-#2,Infinity]&)`;
-', 'R-ECMMon' );
+     assign pipeline object to ecmObj;');
 
 #
 #say to_ECMMon_Py('

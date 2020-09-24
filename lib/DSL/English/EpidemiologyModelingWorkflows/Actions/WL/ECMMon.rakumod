@@ -278,17 +278,21 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon
     method stock-specs-list($/) { make '{' ~ $<stock-spec>>>.made.join(', ') ~ '}'; }
 
 
-  # Pipeline command overwrites
-  ## Value
-  method take-pipeline-value($/) { make 'ECMMonTakeValue[]'; }
-  method echo-pipeline-value($/) { make 'ECMMonEchoValue[]'; }
-  method echo-pipeline-funciton-value($/) { make 'ECMMonEchoFunctionValue[ ' ~ $<pipeline-function-spec>.made ~ ' ]'; }
+    # Pipeline command overwrites
+    ## Object
+    method assign-pipeline-object-to($/) { make 'ECMMonAssignTo[ ' ~ $/.values[0].made ~ ' ]'; }
 
-  ## Context
-  method take-pipeline-context($/) { make 'ECMMonTakeContext[]'; }
-  method echo-pipeline-context($/) { make 'ECMMonEchoContext[]'; }
-  method echo-pipeline-function-context($/) { make 'ECMMonEchoFunctionContext[ ' ~ $<pipeline-function-spec>.made ~ ' ]'; }
+    ## Value
+    method assign-pipeline-value-to($/) { make 'ECMMonValueAssignTo[ ' ~ $/.values[0].made ~ ' ]'; }
+    method take-pipeline-value($/) { make 'ECMMonTakeValue[]'; }
+    method echo-pipeline-value($/) { make 'ECMMonEchoValue[]'; }
+    method echo-pipeline-funciton-value($/) { make 'ECMMonEchoFunctionValue[ ' ~ $<pipeline-function-spec>.made ~ ' ]'; }
 
-  ## Echo messages
-  method echo-command($/) { make 'ECMMonEcho[ ' ~ $<echo-message-spec>.made ~ ' ]'; }
+    ## Context
+    method take-pipeline-context($/) { make 'ECMMonTakeContext[]'; }
+    method echo-pipeline-context($/) { make 'ECMMonEchoContext[]'; }
+    method echo-pipeline-function-context($/) { make 'ECMMonEchoFunctionContext[ ' ~ $<pipeline-function-spec>.made ~ ' ]'; }
+
+    ## Echo messages
+    method echo-command($/) { make 'ECMMonEcho[ ' ~ $<echo-message-spec>.made ~ ' ]'; }
 }
