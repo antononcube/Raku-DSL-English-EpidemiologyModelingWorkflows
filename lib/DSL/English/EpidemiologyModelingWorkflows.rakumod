@@ -62,7 +62,7 @@ multi ToEpidemiologyModelingWorkflowCode ( Str $command where has-semicolon($com
 
     my $specTarget = get-dsl-spec( $command, 'target');
 
-    $specTarget = !$specTarget ?? $target !! $specTarget.value;
+    $specTarget = $specTarget ?? $specTarget<DSLTARGET> !! $target;
 
     die 'Unknown target.' unless %targetToAction{$specTarget}:exists;
 
