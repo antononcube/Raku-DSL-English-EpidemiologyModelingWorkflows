@@ -15,7 +15,7 @@ interpretation of English natural speech commands that specify epidemiology mode
 
 unit module DSL::English::EpidemiologyModelingWorkflows;
 
-use DSL::Shared::Utilities::MetaSpecifications;
+use DSL::Shared::Utilities::MetaSpecsProcessing;
 
 use DSL::English::EpidemiologyModelingWorkflows::Grammar;
 use DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon;
