@@ -88,7 +88,7 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
     token units { 'units' | ([\w]+) <?{ is-fuzzy-match( $0.Str, 'units') }> }
 
     # Rules
-    rule simulation-object-phrase { <simulation> <object> }
+    rule simulation-object-phrase { <simulation> <object-noun> }
     rule time-range-phrase { <time> [ <range> | <span> ] }
     rule traveling-patterns-phrase { <traveling-adjective> [ <pattern-noun> | <patterns-noun> ] }
     rule simulation-results-phrase { <simulation>? <results> | <solution> | <solutions> }
