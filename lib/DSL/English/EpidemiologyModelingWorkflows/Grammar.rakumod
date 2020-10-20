@@ -62,11 +62,11 @@ grammar DSL::English::EpidemiologyModelingWorkflows::Grammar
 
     # Load data
     rule data-load-command { <use-object> }
-    rule use-object { [<.use-verb> | <.using-preposition>] <.the-determiner>? [ <.object> | <.simulation-object-phrase> ] <variable-name> }
+    rule use-object { [<.use-verb> | <.using-preposition>] <.the-determiner>? [ <.object-noun> | <.simulation-object-phrase> ] <variable-name> }
 
     # Create command
     rule create-command { <create-by-single-site-model> | <create-simple> }
-    rule create-preamble-phrase { <generate-directive> [ <.a-determiner> | <.the-determiner> ]? [ <object> | <simulation-object-phrase> ] }
+    rule create-preamble-phrase { <generate-directive> [ <.a-determiner> | <.the-determiner> ]? [ <object-noun> | <simulation-object-phrase> ] }
     rule create-simple { <create-preamble-phrase> <simple-way-phrase>? | <simple> <simulation-object> [ 'creation' | 'making' ] }
     rule create-by-single-site-model { [ <create-preamble-phrase> | <create-directive> ] <.by-preposition> <.the-determiner>? <.model>? <single-site-model-spec> <.model>? }
 
