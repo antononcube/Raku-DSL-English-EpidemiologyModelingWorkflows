@@ -34,11 +34,12 @@ my %targetToAction =
 my %targetToSeparator{Str} =
     "R"                => " %>%\n",
     "R-ECMMon"         => " %>%\n",
-    "Mathematica"      => " ==>\n",
+    "Mathematica"      => " \\[DoubleLongRightArrow]\n",
     "Python"           => "\n",
     "Python-ECMMon"    => "\n",
-    "WL"               => " ==>\n",
-    "WL-ECMMon"        => " ==>\n";
+    "WL"               => " \\[DoubleLongRightArrow]\n",
+    "WL-ECMMon"        => " \\[DoubleLongRightArrow]\n",
+    "WL::ECMMon"       => " \\[DoubleLongRightArrow]\n";
 
 
 #-----------------------------------------------------------
@@ -74,7 +75,9 @@ multi ToEpidemiologyModelingWorkflowCode ( Str $command where has-semicolon($com
 
     @cmdLines = grep { $_.^name eq 'Str' }, @cmdLines;
 
-    return @cmdLines.join( %targetToSeparator{$specTarget} ).trim;
+    my Str $res = @cmdLines.join( %targetToSeparator{$specTarget} ).trim;
+
+    return $res.subst( / ^^ \h* <{ '\'' ~ %targetToSeparator{$specTarget}.trim ~ '\'' }> \h* /, ''):g
 }
 
 #-----------------------------------------------------------

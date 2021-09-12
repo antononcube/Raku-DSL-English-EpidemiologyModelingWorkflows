@@ -18,7 +18,7 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #   Written by Anton Antonov,
-#   antononcube @ gmail . com,
+#   antononcube @@@ posteo ... net,
 #   Windermere, Florida, USA.
 #
 #==============================================================================
@@ -53,6 +53,12 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon
 
     # Top
     method TOP($/) { make $/.values[0].made; }
+
+    # workflow-command-list
+    method workflow-commands-list($/) { make $/.values>>.made.join(" \\[DoubleLongRightArrow]\n"); }
+
+    # workflow-command
+    method workflow-command($/) { make $/.values[0].made; }
 
     # General
     method dataset-name($/) { make $/.values[0].made; }
@@ -295,4 +301,11 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon
 
     ## Echo messages
     method echo-command($/) { make 'ECMMonEcho[ ' ~ $<echo-message-spec>.made ~ ' ]'; }
+
+    ## Setup code
+    method setup-code-command($/) {
+    make q:to/SETUPEND/
+    Import["https://raw.githubusercontent.com/antononcube/SystemModeling/master/Projects/Coronavirus-propagation-dynamics/WL/MonadicEpidemiologyCompartmentalModeling.m"];
+    SETUPEND
+  }
 }

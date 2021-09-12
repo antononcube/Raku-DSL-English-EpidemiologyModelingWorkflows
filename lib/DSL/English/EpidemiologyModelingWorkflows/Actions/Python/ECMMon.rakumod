@@ -46,6 +46,12 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon
     # Top
     method TOP($/) { make $/.values[0].made; }
 
+    # workflow-command-list
+    method workflow-commands-list($/) { make $/.values>>.made.join("\n"); }
+
+    # workflow-command
+    method workflow-command($/) { make $/.values[0].made; }
+
     # General
     method dataset-name($/) { make $/.values[0].made; }
     method variable-name($/) { make $/.Str; }
@@ -270,5 +276,8 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon
     method stock-specs-list($/) { make '["' ~ $<stock-spec>>>.made.join('", "') ~ '"]'; }
 
     # Pipeline command overwrites
-    ## None
+    ## Setup code
+    method setup-code-command($/) {
+        make "print(\"Not implemented\")\n";
+    }
 }
