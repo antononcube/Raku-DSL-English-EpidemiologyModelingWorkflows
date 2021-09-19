@@ -48,15 +48,16 @@ sub has-semicolon (Str $word) {
 }
 
 #-----------------------------------------------------------
-proto ToEpidemiologyModelingWorkflowCode(Str $command, Str $target = "R-ECMMon" ) is export {*}
+proto ToEpidemiologyModelingWorkflowCode(Str $command, Str $target = "R-ECMMon", | ) is export {*}
 
-multi ToEpidemiologyModelingWorkflowCode ( Str $command, Str $target = "R-ECMMon" ) {
+multi ToEpidemiologyModelingWorkflowCode ( Str $command, Str $target = "R-ECMMon", *%args ) {
 
     DSL::Shared::Utilities::CommandProcessing::ToWorkflowCode( $command,
                                                                grammar => DSL::English::EpidemiologyModelingWorkflows::Grammar,
                                                                :%targetToAction,
                                                                :%targetToSeparator,
-                                                               :$target )
+                                                               :$target,
+                                                               |%args )
 
 }
 

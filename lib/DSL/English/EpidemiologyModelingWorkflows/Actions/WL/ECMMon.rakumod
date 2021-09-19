@@ -51,6 +51,9 @@ use DSL::Shared::Actions::English::WL::PipelineCommand;
 class DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon
         is DSL::Shared::Actions::English::WL::PipelineCommand {
 
+    # Separator
+    method separator() { " \\[DoubleLongRightArrow]\n" }
+
     # Top
     method TOP($/) { make $/.values[0].made; }
 
@@ -304,7 +307,7 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon
 
     ## Setup code
     method setup-code-command($/) {
-    make q:to/SETUPEND/
+    make 'SETUPCODE' => q:to/SETUPEND/
     Import["https://raw.githubusercontent.com/antononcube/SystemModeling/master/Projects/Coronavirus-propagation-dynamics/WL/MonadicEpidemiologyCompartmentalModeling.m"];
     SETUPEND
   }

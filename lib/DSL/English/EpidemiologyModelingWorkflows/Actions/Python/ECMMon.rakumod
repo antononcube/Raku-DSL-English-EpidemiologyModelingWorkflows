@@ -278,6 +278,6 @@ class DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon
     # Pipeline command overwrites
     ## Setup code
     method setup-code-command($/) {
-        make "print(\"Not implemented\")\n";
+        make 'SETUPCODE' => "print(\"Not implemented\")\n";
     }
 }
