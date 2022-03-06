@@ -31,6 +31,9 @@ my %targetToAction{Str} =
     "WL"               => DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon,
     "WL-ECMMon"        => DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon;
 
+my %targetToAction2{Str} = %targetToAction.grep({ $_.key.contains('-') }).map({ $_.key.subst('-', '::') => $_.value }).Hash;
+%targetToAction = |%targetToAction , |%targetToAction2;
+
 my Str %targetToSeparator{Str} =
     "R"                => " %>%\n",
     "R-ECMMon"         => " %>%\n",
@@ -38,14 +41,11 @@ my Str %targetToSeparator{Str} =
     "Python"           => "\n",
     "Python-ECMMon"    => "\n",
     "WL"               => " \\[DoubleLongRightArrow]\n",
-    "WL-ECMMon"        => " \\[DoubleLongRightArrow]\n",
-    "WL::ECMMon"       => " \\[DoubleLongRightArrow]\n";
+    "WL-ECMMon"        => " \\[DoubleLongRightArrow]\n";
 
+my Str %targetToSeparator2{Str} = %targetToSeparator.grep({ $_.key.contains('-') }).map({ $_.key.subst('-', '::') => $_.value }).Hash;
+%targetToSeparator = |%targetToSeparator , |%targetToSeparator2;
 
-#-----------------------------------------------------------
-sub has-semicolon (Str $word) {
-    return defined index $word, ';';
-}
 
 #-----------------------------------------------------------
 proto ToEpidemiologyModelingWorkflowCode(Str $command, Str $target = "R-ECMMon", | ) is export {*}
