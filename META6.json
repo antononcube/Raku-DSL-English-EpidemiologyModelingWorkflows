@@ -14,6 +14,7 @@
   "test-depends": [],
   "provides": {
     "DSL::English::EpidemiologyModelingWorkflows": "lib/DSL/English/EpidemiologyModelingWorkflows.rakumod",
+    "DSL::English::EpidemiologyModelingWorkflows::Actions::Bulgarian::Standard": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/Bulgarian/Standard.rakumod",
     "DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/Python/ECMMon.rakumod",
     "DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/R/ECMMon.rakumod",
     "DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/WL/ECMMon.rakumod",

@@ -18,11 +18,13 @@ unit module DSL::English::EpidemiologyModelingWorkflows;
 use DSL::Shared::Utilities::CommandProcessing;
 
 use DSL::English::EpidemiologyModelingWorkflows::Grammar;
+use DSL::English::EpidemiologyModelingWorkflows::Actions::Bulgarian::Standard;
 use DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon;
 use DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon;
 use DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon;
 
 my %targetToAction{Str} =
+    "Bulgarian"        => DSL::English::EpidemiologyModelingWorkflows::Actions::Bulgarian::Standard,
     "Python"           => DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon,
     "Python-ECMMon"    => DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon,
     "R"                => DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon,
@@ -35,6 +37,7 @@ my %targetToAction2{Str} = %targetToAction.grep({ $_.key.contains('-') }).map({ 
 %targetToAction = |%targetToAction , |%targetToAction2;
 
 my Str %targetToSeparator{Str} =
+    "Bulgarian"        => " \n",
     "R"                => " %>%\n",
     "R-ECMMon"         => " %>%\n",
     "Mathematica"      => " \\[DoubleLongRightArrow]\n",
