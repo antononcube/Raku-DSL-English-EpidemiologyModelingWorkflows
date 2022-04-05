@@ -1,4 +1,4 @@
-use v6;
+use v6.d;
 
 use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Utilities::FuzzyMatching;
@@ -8,90 +8,93 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
         does DSL::Shared::Roles::English::PipelineCommand {
     token word-spec { \w+ }
 
-    # Proto tokens
-
     # Epidemiology modeling specific
     # (All unique words of stocks and rates of SEI2HREcon.)
-    token analysis{ 'analysis' }
-    token average { 'average' }
+    token analysis-noun { 'analysis' }
+    token average-adjective { 'average' }
     token batch-noun { 'batch' }
-    token bed { 'bed' }
-    token beds { 'beds' }
+    token bed-noun { 'bed' }
+    token beds-noun { 'beds' }
     token bulk-noun { 'bulk' }
     token calibrate-directive { 'calibrate' }
-    token capacity { 'capacity' }
-    token change { 'change' }
-    token consumption { 'consumption' }
-    token contact { 'contact' }
-    token cost { 'cost' }
-    token country { 'country' }
-    token day { 'day' }
-    token days { 'days' }
-    token death { 'death' }
-    token deceased { 'deceased' }
-    token delay { 'delay' }
-    token delivery { 'delivery' }
-    token demand { 'demand' }
-    token economic { 'economic' }
-    token economics { 'economics' }
-    token exposed { 'exposed' }
-    token factor { 'factor' }
-    token fraction { 'fraction' }
-    token hospital { 'hospital' }
-    token hospitalized { 'hospitalized' }
-    token incubation { 'incubation' }
-    token infected { 'infected' }
-    token infectious { 'infectious' }
-    token lost { 'lost' }
-    token medical { 'medical' }
+    token capacity-noun { 'capacity' }
+    token change-noun { 'change' }
+    token consumption-noun { 'consumption' }
+    token contact-noun { 'contact' }
+    token cost-noun { 'cost' }
+    token country-noun { 'country' }
+    token day-noun { 'day' }
+    token days-noun { 'days' }
+    token death-noun { 'death' }
+    token deceased-noun { 'deceased' }
+    token delay-noun { 'delay' }
+    token delivery-noun { 'delivery' }
+    token demand-noun { 'demand' }
+    token economic-noun { 'economic' }
+    token economics-noun { 'economics' }
+    token exposed-adjective { 'exposed' }
+    token factor-noun { 'factor' }
+    token fraction-noun { 'fraction' }
+    token hospital-noun { 'hospital' }
+    token hospitalized-adjective { 'hospitalized' }
+    token incubation-adjective { 'incubation' }
+    token infected-adjective { 'infected' }
+    token infectious-adjective { 'infectious' }
+    token lost-adjective { 'lost' }
+    token medical-adjective { 'medical' }
     token migrating-adjective { 'migrating' }
     token migration-noun { 'migration' }
-    token money { 'money' }
-    token normally { 'normally' }
-    token number { 'number' }
+    token money-noun { 'money' }
+    token normally-adverb { 'normally' }
+    token number-noun { 'number' }
     token pattern-noun { 'pattern' }
     token patterns-noun { 'patterns' }
-    token pay { 'pay' }
-    token period { 'period' }
-    token person { 'person' }
-    token population { 'population' }
-    token populations { 'populations' }
-    token produced { 'produced' }
-    token production { 'production' }
-    token productivity { 'productivity' }
-    token range { 'range' }
-    token rate { 'rate' }
-    token recovered { 'recovered' }
-    token result { 'result' }
-    token results { 'results' }
-    token sensitivity { 'sensitivity' }
-    token services { 'services' }
-    token severely { 'severely' }
-    token simulation { 'simulation' }
-    token solution { 'solution' }
-    token solutions { 'solutions' }
-    token span { 'span' }
-    token spec { 'spec' }
+    token pay-noun { 'pay' }
+    token period-noun { 'period' }
+    token person-noun { 'person' }
+    token population-noun { 'population' }
+    token populations-noun { 'populations' }
+    token produced-noun { 'produced' }
+    token production-noun { 'production' }
+    token productivity-noun { 'productivity' }
+    token range-noun { 'range' }
+    token rate-noun { 'rate' }
+    token recovered-adjective { 'recovered' }
+    token result-noun { 'result' }
+    token results-noun { 'results' }
+    token score-noun { 'score' }
+    token scores-noun { 'scores' }
+    token scored-adjective { 'scored' }
+    token sensitivity-noun { 'sensitivity' }
+    token services-noun { 'services' }
+    token severely-noun { 'severely' }
+    token simulation-noun { 'simulation' }
+    token solution-noun { 'solution' }
+    token solutions-noun { 'solutions' }
+    token span-noun { 'span' }
+    token spec-noun { 'spec' }
     token stock-noun { 'stock' }
     token stocks-noun { 'stocks' }
-    token store { 'store' }
-    token supplies { 'supplies' }
-    token susceptible { 'susceptible' }
-    token symptomatic { 'symptomatic' }
+    token store-noun { 'store' }
+    token supplies-noun { 'supplies' }
+    token susceptible-adjective { 'susceptible' }
+    token symptomatic-adjective { 'symptomatic' }
     token target-noun { 'target' }
-    token time { 'time' }
-    token total { 'total' }
-    token transport { 'transport' }
+    token time-noun { 'time' }
+    token total-noun { 'total' }
+    token transport-noun { 'transport' }
     token traveling-adjective { 'traveling' }
-    token un-hospitalized { 'un-hospitalized' }
-    token unit { 'unit' }
-    token units { 'units' }
+    token un-hospitalized-adjective { 'un-hospitalized' }
+    token unit-noun { 'unit' }
+    token units-noun { 'units' }
+    token weighed-adjective { 'weighed' }
 
     # Rules
-    rule simulation-object-phrase { <simulation> <object-noun> }
-    rule time-range-phrase { <time> [ <range> | <span> ] }
+    rule simulation-object-phrase { <simulation-noun> <object-noun> }
+    rule time-range-phrase { <time-noun> [ <range-noun> | <span-noun> ] }
     rule traveling-patterns-phrase { <traveling-adjective> [ <pattern-noun> | <patterns-noun> ] }
-    rule simulation-results-phrase { <simulation>? <results> | <solution> | <solutions> }
-    rule single-site-model-phrase { <single-adjective> <site-noun> <model> }
+    rule simulation-results-phrase { <simulation-noun>? <results> | <solution-noun> | <solutions-noun> }
+    rule single-site-model-phrase { <single-adjective> <site-noun> <model-noun> }
     rule migrating-stocks-phrase { [ <migrating-adjective> | <migration-noun> ] [ <stocks-noun> | <stock-noun> ]}
+    rule scored-stocks-phrase { [ <scored-adjective> | <weighed-adjective> ] <stocks-noun> | [ <stock-noun> | <stocks-noun> ] [ <weights-noun> | <scores-noun> ] }
 }
