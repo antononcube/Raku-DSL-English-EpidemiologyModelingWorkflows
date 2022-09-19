@@ -22,9 +22,7 @@
     "DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases": "lib/DSL/English/EpidemiologyModelingWorkflows/Grammar/EpidemiologyPhrases.rakumod",
     "DSL::English::EpidemiologyModelingWorkflows::Grammarish": "lib/DSL/English/EpidemiologyModelingWorkflows/Grammarish.rakumod"
   },
-  "resources": [
-    "token-replacement-rules.csv"
-  ],
+  "resources": [],
   "license": "GPL-3.0-or-later",
   "tags": [
     "Epidemiology modeling",
