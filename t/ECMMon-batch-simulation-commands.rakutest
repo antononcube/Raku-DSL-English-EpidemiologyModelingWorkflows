@@ -1,5 +1,5 @@
 use v6;
-use lib 'lib';
+# use lib <. lib>;
 use DSL::English::EpidemiologyModelingWorkflows::Grammar;
 use Test;
 

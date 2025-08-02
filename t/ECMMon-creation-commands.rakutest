@@ -1,5 +1,5 @@
 use v6;
-use lib 'lib';
+# use lib <. lib>;
 use DSL::English::EpidemiologyModelingWorkflows::Grammar;
 use Test;
 
@@ -12,51 +12,66 @@ my $pECMMONCOMMAND = DSL::English::EpidemiologyModelingWorkflows::Grammar;
 # Creation commands
 #-----------------------------------------------------------
 
+## 1
 ok $pECMMONCOMMAND.parse('create with sir'),
         'create with sir';
 
+## 2
 ok $pECMMONCOMMAND.parse('create with seir'),
         'create with seir';
 
+## 3
 ok $pECMMONCOMMAND.parse('create with sei2r'),
         'create with sei2r';
 
+## 4
 ok $pECMMONCOMMAND.parse('create using sei2hr'),
         'create using sei2hr';
 
+## 5
 ok $pECMMONCOMMAND.parse('create with sei2hrecon'),
         'create with sei2hrecon';
 
+## 6
 ok $pECMMONCOMMAND.parse('create with economic sei2hr'),
         'create with economic sei2hr';
 
+## 7
 ok $pECMMONCOMMAND.parse('create with sei2hr model'),
         'create with sei2hr model';
 
+## 8
 ok $pECMMONCOMMAND.parse('create with sei2hr single site model'),
         'create with sei2hr single site model';
 
+## 9
 ok $pECMMONCOMMAND.parse('create object with sei2hr model'),
         'create object with sei2hr model';
 
+## 10
 ok $pECMMONCOMMAND.parse('create object with susceptible infected recovered model'),
         'create object with susceptible infected recovered model';
 
+## 11
 ok $pECMMONCOMMAND.parse('create object with susceptible exposed infected recovered single site model'),
         'create object with susceptible exposed infected recovered single site model';
 
+## 12
 ok $pECMMONCOMMAND.parse('create object with susceptible exposed infected two recovered'),
         'create object with susceptible exposed infected two recovered';
 
+## 13
 ok $pECMMONCOMMAND.parse('create using susceptible exposed two infected recovered'),
         'create using susceptible exposed two infected recovered';
 
+## 14
 ok $pECMMONCOMMAND.parse('create using economics susceptible exposed two infected recovered'),
         'create using economics susceptible exposed two infected recovered';
 
+## 15
 ok $pECMMONCOMMAND.parse('create using economics model for susceptible exposed two infected recovered'),
         'create using economics model for susceptible exposed two infected recovered';
-
+## 16
 ok $pECMMONCOMMAND.parse('create using susceptible exposed two infected recovered with economy'),
         'create using susceptible exposed two infected recovered with economy';
 
