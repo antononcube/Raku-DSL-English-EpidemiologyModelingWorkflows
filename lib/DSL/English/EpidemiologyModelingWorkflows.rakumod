@@ -31,6 +31,7 @@ my %targetToAction{Str} =
     "R-ECMMon"         => DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon,
     "Mathematica"      => DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon,
     "WL"               => DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon,
+    "WL-Ecosystem"     => DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon,
     "WL-ECMMon"        => DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon;
 
 my %targetToAction2{Str} = %targetToAction.grep({ $_.key.contains('-') }).map({ $_.key.subst('-', '::') => $_.value }).Hash;
@@ -44,6 +45,7 @@ my Str %targetToSeparator{Str} =
     "Python"           => "\n",
     "Python-ECMMon"    => "\n",
     "WL"               => " \\[DoubleLongRightArrow]\n",
+    "WL-Ecosystem"     => " \\[DoubleLongRightArrow]\n",
     "WL-ECMMon"        => " \\[DoubleLongRightArrow]\n";
 
 my Str %targetToSeparator2{Str} = %targetToSeparator.grep({ $_.key.contains('-') }).map({ $_.key.subst('-', '::') => $_.value }).Hash;
