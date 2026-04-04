@@ -1,12 +1,11 @@
-use lib './lib';
-use lib '.';
+# use lib <. lib>;
 use DSL::English::EpidemiologyModelingWorkflows;
 use DSL::English::EpidemiologyModelingWorkflows::Grammar;
 
 #say DSL::English::EpidemiologyModelingWorkflows::Grammar.subparse('calibrate for target DIPt -> tsDeathsUK, with scored stocks DIPt->1 and ISSPt ->3, over TPt in from 100000 to 1000000 step 100000, lpcr = 0 and aincp = c(12, 16, 21)');
 
 say ToEpidemiologyModelingWorkflowCode(q:to/END/, format => 'hash' )
-DSL TARGET R-ECMMon;
+DSL TARGET WL-Ecosystem;
 include setup code;
 create with SEI2HR;
 assign 100000 to susceptible population;
