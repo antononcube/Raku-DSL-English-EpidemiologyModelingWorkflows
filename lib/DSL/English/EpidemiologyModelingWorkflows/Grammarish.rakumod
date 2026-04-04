@@ -165,7 +165,12 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammarish {
     #        <.batch-simulate-preamble> <.over-phrase>? <batch-simulation-parameters-spec> [ <.for-phrase>? <time-range-spec> ]? |
     #        <.batch-simulate-preamble> <.for-phrase>? <time-range-spec> <.over-phrase>? <batch-simulation-parameters-spec>
     #    }
-    rule batch-simulate-over-parameters { <.batch-simulate-preamble> <.over-phrase>? <batch-simulation-parameters-spec> [ <.for-phrase>? <time-range-spec> ]? }
+    rule batch-simulate-over-parameters { <.batch-simulate-preamble>
+            [
+                | [ <.for-phrase> | <.using-preposition> ] <time-range-spec> [ <.over-phrase>? <batch-simulation-parameters-spec> ]?
+                | <.over-phrase>? <batch-simulation-parameters-spec> [ <.for-phrase>? <time-range-spec> ]?
+            ]
+    }
     rule over-phrase { <over-preposition> | <with-preposition> }
     rule for-phrase { <over-preposition> | <with-preposition> | <for-preposition> }
 
