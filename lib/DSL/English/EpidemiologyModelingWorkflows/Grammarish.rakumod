@@ -205,9 +205,12 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammarish {
     rule target-stock-spec { <stock-spec> [ <.key-to-symbol> | <.equal-symbol> ] <variable-name> }
 
     # Calibration parameters
-    rule calibration-parameters-spec { <.over-phrase> <.the-determiner>? <.parameters-noun> <parameter-span-spec-list> }
+    rule calibration-parameters-spec { <.over-phrase> <.the-determiner>? <.parameters-noun>? <parameter-span-spec-list> }
     rule parameter-span-spec-list { <parameter-span-spec>+ % <list-separator> }
-    rule parameter-span-spec { <parameter-spec> [ <.running-over-phrase> | <.is-verb>? <.in-preposition> | <.equal-symbol> ]? <parameter-span> }
+    rule parameter-span-spec {
+        | <parameter-spec> [ <.running-over-phrase> | <.is-verb>? <.in-preposition> | <.equal-symbol> ]? <parameter-span>
+        | <dataset-name>
+    }
     rule parameter-span { <span-spec> | <r-span-spec> | <wl-span-spec> | <number-value-list> | <r-numeric-list-spec> | <wl-numeric-list-spec> }
 
     # Calibration distance function
