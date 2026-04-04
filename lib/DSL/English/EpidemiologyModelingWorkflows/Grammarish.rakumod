@@ -59,21 +59,21 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammarish {
         <medical-supplies-demand-spec> | <hospital-beds-spec> |
         <money-for-medical-supplies-production-spec> | <money-for-hospital-services-spec> |
         <hospital-medical-supplies-spec> }
-    rule total-population-spec { <total-noun> <population-noun> | 'TP[t]' | 'TPt' }
-    rule susceptible-population-spec { <susceptible-adjective> <population-noun> | 'SP[t]' | 'SPt' }
+    rule total-population-spec { <total-noun> <population-noun> | 'TP[t]' | 'TPt' | TP }
+    rule susceptible-population-spec { <susceptible-adjective> <population-noun> | 'SP[t]' | 'SPt' | SP }
     rule exposed-population-spec { <exposed-adjective> <population-noun> | 'EP[t]' | 'EPt' }
     rule infected-normally-symptomatic-population-spec { <infected-adjective>? <normally-adverb> <symptomatic-adjective> <population-noun> | 'INSP[t]' | 'INSPt' | 'INSP' }
     rule infected-severely-symptomatic-population-spec { <infected-adjective>? <severely-noun> <symptomatic-adjective> <population-noun> | 'ISSP[t]' | 'ISSPt' | 'ISSP' }
-    rule recovered-population-spec { <recovered-adjective> <population-noun> | 'RP[t]' | 'RPt' }
-    rule money-of-lost-productivity-spec { <money-noun> <of-preposition> <lost-adjective> <productivity-noun> | 'MLP[t]' | 'MLPt' }
+    rule recovered-population-spec { <recovered-adjective> <population-noun> | 'RP[t]' | 'RPt' | RP}
+    rule money-of-lost-productivity-spec { <money-noun> <of-preposition> <lost-adjective> <productivity-noun> | 'MLP[t]' | 'MLPt' | MLP }
     rule hospitalized-population-spec { <hospitalized-adjective> <population-noun> | 'HP[t]' | 'HPt' }
-    rule deceased-infected-population-spec { <deceased-noun> <infected-adjective> <population-noun> | 'DIP[t]' | 'DIPt' }
-    rule medical-supplies-spec { <medical-adjective> <supplies-noun> | 'MS[t]' | 'MSt' }
-    rule medical-supplies-demand-spec { <medical-adjective> <supplies-noun> <demand-noun> | 'MSD[t]' | 'MSDt' }
-    rule hospital-beds-spec { <hospital-noun> <beds-noun> | 'HB[t]' | 'HBt' }
-    rule money-for-medical-supplies-production-spec { <money-noun> <for-preposition> <medical-adjective> <supplies-noun> <production-noun> | 'MMSP[t]' | 'MMSPt' }
-    rule money-for-hospital-services-spec { <money-noun> <for-preposition> <hospital-noun> <services-noun> | 'MHS[t]' | 'MHSt' }
-    rule hospital-medical-supplies-spec { <hospital-noun> <medical-adjective> <supplies-noun> | 'HMS[t]' | 'HMSt' }
+    rule deceased-infected-population-spec { <deceased-noun> <infected-adjective> <population-noun> | 'DIP[t]' | 'DIPt' | DIP }
+    rule medical-supplies-spec { <medical-adjective> <supplies-noun> | 'MS[t]' | 'MSt' | MS}
+    rule medical-supplies-demand-spec { <medical-adjective> <supplies-noun> <demand-noun> | 'MSD[t]' | 'MSDt' | MSD}
+    rule hospital-beds-spec { <hospital-noun> <beds-noun> | 'HB[t]' | 'HBt' | HB }
+    rule money-for-medical-supplies-production-spec { <money-noun> <for-preposition> <medical-adjective> <supplies-noun> <production-noun> | 'MMSP[t]' | 'MMSPt' | MMSP }
+    rule money-for-hospital-services-spec { <money-noun> <for-preposition> <hospital-noun> <services-noun> | 'MHS[t]' | 'MHSt' | MHS }
+    rule hospital-medical-supplies-spec { <hospital-noun> <medical-adjective> <supplies-noun> | 'HMS[t]' | 'HMSt' | HMS }
 
     # Rate specification
     rule rate-spec {
@@ -192,7 +192,13 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammarish {
     rule calibrate-preamble { <calibrate-directive> }
     rule calibration-spec { <.calibrate-preamble> <calibration-arguments-list> }
     regex calibration-arguments-list { <calibration-argument>+ % [ <list-separator> | <ws> ]}
-    regex calibration-argument { <calibration-target-spec> | <calibration-distance-function-spec> | <calibration-method-spec> | <calibration-stock-weights-spec> | <calibration-parameters-spec> }
+    regex calibration-argument {
+        | <calibration-target-spec>
+        | <calibration-distance-function-spec>
+        | <calibration-method-spec>
+        | <calibration-stock-weights-spec>
+        | <calibration-parameters-spec>
+    }
 
     # Calibration target
     rule calibration-target-spec { <.for-phrase> <.the-determiner>? <.target-noun> <target-stock-spec> }
