@@ -3,7 +3,7 @@ use v6;
 use DSL::English::EpidemiologyModelingWorkflows::Grammar;
 use Test;
 
-plan 7;
+plan *;
 
 # Shortcut
 my $pECMMONCOMMAND = DSL::English::EpidemiologyModelingWorkflows::Grammar;
