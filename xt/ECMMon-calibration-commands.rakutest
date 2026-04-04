@@ -1,0 +1,27 @@
+use v6;
+# use lib <. lib>;
+use DSL::English::EpidemiologyModelingWorkflows::Grammar;
+use Test;
+
+plan 7;
+
+# Shortcut
+my $pECMMONCOMMAND = DSL::English::EpidemiologyModelingWorkflows::Grammar;
+
+#-----------------------------------------------------------
+# Calibration commands
+#-----------------------------------------------------------
+
+# Again the min-max problems but not only.
+# 8
+ok $pECMMONCOMMAND.parse('calibrate with TPt in min 10^4 max 10^5 step 500, lpcr = 0 for the targets DIP -> tsDeaths and ISSP -> tsCases'),
+        'calibrate with TPt in min 10^4 max 10^5 step 500, lpcr = 0 for the targets DIP -> tsDeaths and ISSP -> tsCases';
+
+# The following simpler tests also do not pass
+ok $pECMMONCOMMAND.parse('calibrate for the target DIP -> tsDeaths over TPt in from 10^4 to 10^5 step 500'),
+        'calibrate for the target DIP -> tsDeaths over TPt in from 10^4 to 10^5 step 500';
+
+ok $pECMMONCOMMAND.parse('calibrate over TPt in from 10^4 to 10^5 step 500, for the target DIP -> tsDeaths'),
+        'calibrate over TPt in from 10^4 to 10^5 step 500, for the target DIP -> tsDeaths';
+
+done-testing;
