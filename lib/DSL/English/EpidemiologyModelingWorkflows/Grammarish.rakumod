@@ -211,7 +211,11 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammarish {
         | <parameter-spec> [ <.running-over-phrase> | <.is-verb>? <.in-preposition> | <.equal-symbol> ]? <parameter-span>
         | <dataset-name>
     }
-    rule parameter-span { <span-spec> | <r-span-spec> | <wl-span-spec> | <number-value-list> | <r-numeric-list-spec> | <wl-numeric-list-spec> }
+    rule parameter-span {
+        | <range-spec> | <r-range-spec> | <wl-range-spec>
+        | <span-spec> | <r-span-spec> | <wl-span-spec>
+        | <number-value-list> | <r-numeric-list-spec> | <wl-numeric-list-spec>
+    }
 
     # Calibration distance function
     rule calibration-distance-function-spec { <.using-preposition>? <.the-determiner>? <.distance-function-phrase> <distance-function-spec> }
