@@ -44,10 +44,11 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammarish {
     rule SEI2R-spec { 'SEI2R' | 'sei2r' | <susceptible-adjective> <exposed-adjective> <infected-adjective> [ 'two' | '2' ] <recovered-adjective> }
     rule SEI2HR-spec { 'SEI2HR' | 'sei2hr' | <susceptible-adjective> <exposed-adjective> <infected-adjective> [ 'two' | '2' ] <hospitalized-adjective> <recovered-adjective>  }
     rule SEI2HREcon-spec {
-        'SEI2HREcon' | 'sei2hrecon' |
-        <susceptible-adjective> <exposed-adjective> <infected-adjective> [ 'two' | '2' ] <hospitalized-adjective> <recovered-adjective> <economics-noun> |
-        <economics-noun> <SEI2HR-spec>
-  }
+        | 'SEI2HREcon'
+        | 'sei2hrecon'
+        | <susceptible-adjective> <exposed-adjective> <infected-adjective> [ 'two' | '2' ] <hospitalized-adjective> <recovered-adjective> <economics-noun>
+        | [ <economics-noun> | <economic-noun> ] <SEI2HR-spec>
+    }
 
     # Stock specification
     rule stock-spec {
