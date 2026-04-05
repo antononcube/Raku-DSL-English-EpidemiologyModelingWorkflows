@@ -33,34 +33,30 @@ ok $pECMMONCOMMAND.parse('extend by adjacent matrix mat1 with migrating stocks S
         'extend by adjacent matrix mat1 with migrating stocks SPt, EPt, and RPt';
 
 # 6
-ok $pECMMONCOMMAND.parse('extend by adjacent matrix mat1 using the migration stocks susceptible population, exposed population, and recovered population'),
-        'extend by adjacent matrix mat1 using the migration stocks susceptible population, exposed population, and recovered population';
-
-# 7
 ok $pECMMONCOMMAND.parse('extend with the data frame dfTrav1'),
         'extend with the data frame dfTrav1';
 
-# 8
+# 7
 ok $pECMMONCOMMAND.parse('extend the single site model with the data frame dfTrav1'),
         'extend the single site model with the data frame dfTrav1';
 
-# 9
+# 8
 ok $pECMMONCOMMAND.parse('extend single site model by data frame dfTrav1'),
         'extend single site model by data frame dfTrav1';
 
-# 10
+# 9
 ok $pECMMONCOMMAND.parse('spread out the single site model by the dataset dfTrav1'),
         'spread out the single site model by the dataset dfTrav1';
 
-# 11
+# 10
 ok $pECMMONCOMMAND.parse('spread out with traveling patterns of Botswana'),
         'spread out with traveling patterns of Botswana';
 
-# 12
+# 11
 ok $pECMMONCOMMAND.parse('spread out the single site model with the traveling patterns of Botswana'),
         'spread out the single site model with the traveling patterns of Botswana';
 
-# 13
+# 12
 ok $pECMMONCOMMAND.parse('spread out the single site model with the traveling patterns of the country Spain'),
         'spread out the single site model with the traveling patterns of the country Spain';
 

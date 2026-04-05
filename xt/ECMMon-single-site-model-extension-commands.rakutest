@@ -1,0 +1,19 @@
+use v6;
+# use lib <. lib>;
+use DSL::English::EpidemiologyModelingWorkflows::Grammar;
+use Test;
+
+plan *;
+
+# Shortcut
+my $pECMMONCOMMAND = DSL::English::EpidemiologyModelingWorkflows::Grammar;
+
+#-----------------------------------------------------------
+# Extension commands
+#-----------------------------------------------------------
+
+# 1
+ok $pECMMONCOMMAND.parse('extend by adjacent matrix mat1 using the migration stocks susceptible population, exposed population, and recovered population'),
+        'extend by adjacent matrix mat1 using the migration stocks susceptible population, exposed population, and recovered population';
+
+done-testing;
