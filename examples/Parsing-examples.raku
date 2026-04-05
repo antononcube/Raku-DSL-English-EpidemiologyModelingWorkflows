@@ -13,7 +13,8 @@ my @commands =
         'simulate up to 365 days',
         ;
 for @commands {
-    say '-' x 60;
+    say '=' x 60;
     say ($_);
+    say '-' x 60;
     say $g.parse($_);
 }
