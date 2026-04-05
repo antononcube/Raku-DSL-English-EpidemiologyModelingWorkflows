@@ -1,0 +1,23 @@
+use v6;
+# use lib <. lib>;
+use DSL::English::EpidemiologyModelingWorkflows::Grammar;
+use Test;
+
+plan *;
+
+# Shortcut
+my $pECMMONCOMMAND = DSL::English::EpidemiologyModelingWorkflows::Grammar;
+
+#-----------------------------------------------------------
+# Simulations commands
+#-----------------------------------------------------------
+
+## 1
+ok $pECMMONCOMMAND.parse('simulate from 0 to 365'),
+        'simulate from 0 to 365';
+
+## 2
+ok $pECMMONCOMMAND.parse('simulate for time from 0 to 365'),
+        'simulate for time from 0 to 365';
+
+done-testing;
