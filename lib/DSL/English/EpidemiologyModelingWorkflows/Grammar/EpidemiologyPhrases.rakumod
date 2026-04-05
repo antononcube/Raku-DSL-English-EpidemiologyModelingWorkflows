@@ -270,5 +270,8 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
 
     proto rule scored-stocks-phrase {*}
     rule scored-stocks-phrase:sym<English> {  [ <scored-adjective> | <weighed-adjective> ] <stocks-noun> | [ <stock-noun> | <stocks-noun> ] [ <weights-noun> | <scores-noun> ]  }
+
+    proto rule up-to-phrase {*}
+    token up-to-phrase:sym<English> { 'up' \h* 'to' }
 }
 

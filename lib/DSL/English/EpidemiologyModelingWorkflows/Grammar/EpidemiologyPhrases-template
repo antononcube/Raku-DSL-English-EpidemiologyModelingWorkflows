@@ -98,4 +98,5 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
     rule single-site-model-phrase { <single-site-phrase> <model-noun> }
     rule migrating-stocks-phrase { [ <migrating-adjective> | <migration-noun> ] [ <stocks-noun> | <stock-noun> ]}
     rule scored-stocks-phrase { [ <scored-adjective> | <weighed-adjective> ] <stocks-noun> | [ <stock-noun> | <stocks-noun> ] [ <weights-noun> | <scores-noun> ] }
+    token up-to-phrase { 'up' \h* 'to' }
 }

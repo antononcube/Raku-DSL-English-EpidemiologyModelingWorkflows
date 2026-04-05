@@ -145,18 +145,18 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammarish {
     rule simulate-simple-spec { <.simulate-directive> }
     rule simulate-over-time-range { <.simulate-directive> <time-range-spec-command-part> }
 
-    rule time-range-spec-command-part { [ <.over-preposition> | <.for-preposition> ] <.the-determiner>? <.time-range-phrase>? <time-range-spec> }
+    rule time-range-spec-command-part { [ <.over-preposition> | <.for-preposition> | <.up-to-phrase> ] <.the-determiner>? <.time-range-phrase>? <time-range-spec> }
 
     rule time-range-spec { <max-time> | <time-range-simple-spec> | <time-range-element-list> }
 
     rule time-range-simple-spec { <number-value> [ <day-noun> | <days-noun> ] }
 
     rule time-range-phrase-ext { <time-range-phrase> | <time-noun> }
-    rule time-range-element-list { <time-range-element>+ % <list-separator> }
+    rule time-range-element-list { <time-range-element>+ % [ <list-separator> | <ws> ] }
     rule time-range-element { <time-range-min> | <time-range-max> | <time-range-step> }
-    rule time-range-min { [ <.time-range-phrase> <.minimum> | <.minimum> <.of-preposition>? <.the-determiner>? <.time-noun>? ] <number-value> }
-    rule time-range-max { [ <.time-range-phrase> <.maximum> | <.maximum> <.of-preposition>? <.the-determiner>? <.time-noun>? ] <number-value> }
-    rule time-range-step { [ <.time-range-phrase> <.step-noun> | <.step-noun> <.of-preposition>? <.the-determiner>?  <.time-noun>? ] <number-value> }
+    rule time-range-min { [ <.time-range-phrase> <.minimum> | <.minimum> <.of-preposition>? <.the-determiner>? <.time-noun>? | <.from-preposition> ] <number-value> }
+    rule time-range-max { [ <.time-range-phrase> <.maximum> | <.maximum> <.of-preposition>? <.the-determiner>? <.time-noun>? | <.to-preposition> ] <number-value> }
+    rule time-range-step { [ <.time-range-phrase> <.step-noun> | <.step-noun> <.of-preposition>? <.the-determiner>? <.time-noun>? ] <number-value> }
 
     rule max-time { <.maximum> <.time-noun> <number-value> | <.time-range-phrase> <number-value> }
 
