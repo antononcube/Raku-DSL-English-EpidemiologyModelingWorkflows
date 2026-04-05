@@ -1,39 +1,36 @@
 {
-  "name": "DSL::English::EpidemiologyModelingWorkflows",
-  "description": "Epidemiology Modeling workflows building by natural language commands.",
-  "version": "0.5.0",
-  "perl": "6.d",
-  "authors": [
-    "Anton Antonov"
-  ],
-  "auth": "github:antononcube",
-  "depends": [
-    "DSL::Shared"
-  ],
-  "build-depends": [],
-  "test-depends": [],
-  "provides": {
-    "DSL::English::EpidemiologyModelingWorkflows": "lib/DSL/English/EpidemiologyModelingWorkflows.rakumod",
-    "DSL::English::EpidemiologyModelingWorkflows::Actions::Bulgarian::Standard": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/Bulgarian/Standard.rakumod",
-    "DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/Python/ECMMon.rakumod",
-    "DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/R/ECMMon.rakumod",
-    "DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/WL/ECMMon.rakumod",
-    "DSL::English::EpidemiologyModelingWorkflows::Grammar": "lib/DSL/English/EpidemiologyModelingWorkflows/Grammar.rakumod",
-    "DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases": "lib/DSL/English/EpidemiologyModelingWorkflows/Grammar/EpidemiologyPhrases.rakumod",
-    "DSL::English::EpidemiologyModelingWorkflows::Grammarish": "lib/DSL/English/EpidemiologyModelingWorkflows/Grammarish.rakumod"
-  },
-  "resources": [],
-  "license": "GPL-3.0-or-later",
-  "tags": [
-    "Epidemiology modeling",
-    "Epidemiology",
-    "Modeling",
-    "Parser",
-    "Interpreter",
-    "Monad",
-    "Workflow",
-    "Pipeline"
-  ],
-  "api": "1",
-  "source-url": "https://github.com/antononcube/Raku-DSL-English-EpidemiologyModelingWorkflows.git"
+    "name": "DSL::English::EpidemiologyModelingWorkflows",
+    "description": "Epidemiology Modeling workflows building by natural language commands.",
+    "version": "0.5.0",
+    "authors": [
+        "Anton Antonov"
+    ],
+    "auth": "zef:antononcube",
+    "depends": [
+        "DSL::Shared:ver<0.2.11+>"
+    ],
+    "build-depends": [],
+    "provides": {
+        "DSL::English::EpidemiologyModelingWorkflows": "lib/DSL/English/EpidemiologyModelingWorkflows.rakumod",
+        "DSL::English::EpidemiologyModelingWorkflows::Actions::Bulgarian::Standard": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/Bulgarian/Standard.rakumod",
+        "DSL::English::EpidemiologyModelingWorkflows::Actions::Python::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/Python/ECMMon.rakumod",
+        "DSL::English::EpidemiologyModelingWorkflows::Actions::R::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/R/ECMMon.rakumod",
+        "DSL::English::EpidemiologyModelingWorkflows::Actions::WL::ECMMon": "lib/DSL/English/EpidemiologyModelingWorkflows/Actions/WL/ECMMon.rakumod",
+        "DSL::English::EpidemiologyModelingWorkflows::Grammar": "lib/DSL/English/EpidemiologyModelingWorkflows/Grammar.rakumod",
+        "DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases": "lib/DSL/English/EpidemiologyModelingWorkflows/Grammar/EpidemiologyPhrases.rakumod",
+        "DSL::English::EpidemiologyModelingWorkflows::Grammarish": "lib/DSL/English/EpidemiologyModelingWorkflows/Grammarish.rakumod"
+    },
+    "license": "GPL-3.0-or-later",
+    "tags": [
+        "Epidemiology modeling",
+        "Epidemiology",
+        "Modeling",
+        "Parser",
+        "Interpreter",
+        "Monad",
+        "Workflow",
+        "Pipeline"
+    ],
+    "api": "1",
+    "source-url": "https://github.com/antononcube/Raku-DSL-English-EpidemiologyModelingWorkflows.git"
 }
