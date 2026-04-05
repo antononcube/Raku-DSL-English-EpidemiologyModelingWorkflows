@@ -2,8 +2,8 @@
 
 ## In brief
 
-This Raku Perl 6 package has grammar classes and action classes for the parsing and
-interpretation of spoken commands that specify epidemiology modeling workflows.
+This Raku package has grammar classes and action classes for the parsing and
+interpretation of natural language commands that specify epidemiological modeling workflows.
 
 It is envisioned that the interpreters (actions) are going to target different
 programming languages: R, WL, Python, etc.
@@ -47,17 +47,6 @@ say ToEpidemiologyModelingWorkflowCode('
      simulate for 240 days;
      plot results;
 ', 'R-ECMMon');
-```
-```
-# ECMMonUnit( model = SEI2HRModel()) %>%
-# ECMMonAssignInitialConditions( initConds = c(TPt = 100000) ) %>%
-# ECMMonAssignInitialConditions( initConds = c(INSPt = 0) ) %>%
-# ECMMonAssignInitialConditions( initConds = c(ISSPt = 1) ) %>%
-# ECMMonAssignRateValues( rateValues = c(contactRateINSP = 0.56) ) %>%
-# ECMMonAssignRateValues( rateValues = c(contactRateISSP = 0.58) ) %>%
-# ECMMonAssignRateValues( rateValues = c(contactRateHP = 0.1) ) %>%
-# ECMMonSimulate(maxTime = 240) %>%
-# ECMMonPlotSolutions()
 ```
 
 -----
