@@ -60,19 +60,4 @@ ok $pECMMONCOMMAND.parse('create object with susceptible exposed infected recove
 ok $pECMMONCOMMAND.parse('create object with susceptible exposed infected two recovered'),
         'create object with susceptible exposed infected two recovered';
 
-## 13
-ok $pECMMONCOMMAND.parse('create using susceptible exposed two infected recovered'),
-        'create using susceptible exposed two infected recovered';
-
-## 14
-ok $pECMMONCOMMAND.parse('create using economics susceptible exposed two infected recovered'),
-        'create using economics susceptible exposed two infected recovered';
-
-## 15
-ok $pECMMONCOMMAND.parse('create using economics model for susceptible exposed two infected recovered'),
-        'create using economics model for susceptible exposed two infected recovered';
-## 16
-ok $pECMMONCOMMAND.parse('create using susceptible exposed two infected recovered with economy'),
-        'create using susceptible exposed two infected recovered with economy';
-
 done-testing;

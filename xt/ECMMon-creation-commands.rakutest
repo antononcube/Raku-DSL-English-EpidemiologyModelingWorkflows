@@ -1,0 +1,30 @@
+use v6;
+# use lib <. lib>;
+use DSL::English::EpidemiologyModelingWorkflows::Grammar;
+use Test;
+
+plan *;
+
+# Shortcut
+my $pECMMONCOMMAND = DSL::English::EpidemiologyModelingWorkflows::Grammar;
+
+#-----------------------------------------------------------
+# Creation commands
+#-----------------------------------------------------------
+
+## 13
+ok $pECMMONCOMMAND.parse('create using susceptible exposed two infected recovered'),
+        'create using susceptible exposed two infected recovered';
+
+## 14
+ok $pECMMONCOMMAND.parse('create using economics susceptible exposed two infected recovered'),
+        'create using economics susceptible exposed two infected recovered';
+
+## 15
+ok $pECMMONCOMMAND.parse('create using economics model for susceptible exposed two infected recovered'),
+        'create using economics model for susceptible exposed two infected recovered';
+## 16
+ok $pECMMONCOMMAND.parse('create using susceptible exposed two infected recovered with economy'),
+        'create using susceptible exposed two infected recovered with economy';
+
+done-testing;
