@@ -3,7 +3,7 @@ use v6;
 use DSL::English::EpidemiologyModelingWorkflows::Grammar;
 use Test;
 
-plan 9;
+plan *;
 
 # Shortcut
 my $pECMMONCOMMAND = DSL::English::EpidemiologyModelingWorkflows::Grammar;
@@ -12,30 +12,47 @@ my $pECMMONCOMMAND = DSL::English::EpidemiologyModelingWorkflows::Grammar;
 # Simulations commands
 #-----------------------------------------------------------
 
+## 1
 ok $pECMMONCOMMAND.parse('simulate'),
         'simulate';
 
+## 2
 ok $pECMMONCOMMAND.parse('simulate over 365 days'),
         'simulate over 365 days';
 
+## 3
 ok $pECMMONCOMMAND.parse('simulate for 365 days'),
         'simulate for 365 days';
 
+## 4
 ok $pECMMONCOMMAND.parse('simulate over time range 365'),
         'simulate over time range 365';
 
+## 5
 ok $pECMMONCOMMAND.parse('simulate for max time 365'),
         'simulate for max time 365';
 
+## 6
+ok $pECMMONCOMMAND.parse('simulate up to 365 days'),
+        'simulate up to 365 days';
+
+## 7
+ok $pECMMONCOMMAND.parse('simulate for time range from 0 to 365'),
+        'simulate for time range from 0 to 365';
+
+## 8
 ok $pECMMONCOMMAND.parse('simulate over min time 0 max time 365'),
         'simulate over min time 0 max time 365';
 
+## 9
 ok $pECMMONCOMMAND.parse('simulate over min time 0, max time 365'),
         'simulate over min time 0, max time 365';
 
+## 10
 ok $pECMMONCOMMAND.parse('simulate over min time 0 max time 365 step 12'),
         'simulate over min time 0 max time 365 step 12';
 
+## 11
 ok $pECMMONCOMMAND.parse('simulate over time range min 0 max 365'),
         'simulate over time range min 0 max 365';
 
