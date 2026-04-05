@@ -94,7 +94,8 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
     rule time-range-phrase { <time-noun> [ <range-noun> | <span-noun> ] }
     rule traveling-patterns-phrase { <traveling-adjective> [ <pattern-noun> | <patterns-noun> ] }
     rule simulation-results-phrase { <simulation-noun>? <results> | <solution-noun> | <solutions-noun> }
-    rule single-site-model-phrase { <single-adjective> <site-noun> <model-noun> }
+    rule single-site-phrase { <single-adjective> <site-noun> }
+    rule single-site-model-phrase { <single-site-phrase> <model-noun> }
     rule migrating-stocks-phrase { [ <migrating-adjective> | <migration-noun> ] [ <stocks-noun> | <stock-noun> ]}
     rule scored-stocks-phrase { [ <scored-adjective> | <weighed-adjective> ] <stocks-noun> | [ <stock-noun> | <stocks-noun> ] [ <weights-noun> | <scores-noun> ] }
 }

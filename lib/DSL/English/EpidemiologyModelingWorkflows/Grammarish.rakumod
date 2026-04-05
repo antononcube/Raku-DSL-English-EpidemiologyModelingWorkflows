@@ -35,7 +35,8 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammarish {
     rule create-command { <create-by-single-site-model> | <create-simple> }
     rule create-preamble-phrase { <generate-directive> [ <.a-determiner> | <.the-determiner> ]? [ <object-noun> | <simulation-object-phrase> ] }
     rule create-simple { <create-preamble-phrase> <simple-way-phrase>? | <simple> <simulation-object> [ <creation-noun> | <making-noun> ] }
-    rule create-by-single-site-model { [ <create-preamble-phrase> | <create-directive> ] <.by-preposition> <.the-determiner>? <.model>? <single-site-model-spec> <.model>? }
+    rule create-by-single-site-model {
+        [ <create-preamble-phrase> | <create-directive> ] <.by-preposition> <.the-determiner>? [ <.single-site-phrase>? <.model>]? <single-site-model-spec> [ <.single-site-phrase>? <.model>]? }
 
     # Single-site model spec
     rule single-site-model-spec { <SIR-spec> | <SEIR-spec> | <SEI2R-spec> | <SEI2HR-spec> | <SEI2HREcon-spec> }

@@ -259,8 +259,11 @@ role DSL::English::EpidemiologyModelingWorkflows::Grammar::EpidemiologyPhrases
     proto rule simulation-results-phrase {*}
     rule simulation-results-phrase:sym<English> {  <simulation-noun>? <results> | <solution-noun> | <solutions-noun>  }
 
+    proto rule single-site-phrase {*}
+    rule single-site-phrase:sym<English> {  <single-adjective> <site-noun> }
+
     proto rule single-site-model-phrase {*}
-    rule single-site-model-phrase:sym<English> {  <single-adjective> <site-noun> <model-noun>  }
+    rule single-site-model-phrase:sym<English> {  <single-site-phrase> <model-noun>  }
 
     proto rule migrating-stocks-phrase {*}
     rule migrating-stocks-phrase:sym<English> {  [ <migrating-adjective> | <migration-noun> ] [ <stocks-noun> | <stock-noun> ] }
